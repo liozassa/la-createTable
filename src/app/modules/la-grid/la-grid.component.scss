@@ -1,0 +1,35 @@
+.la-grid {
+    width: 100%;
+    th {
+        background-color: #F6F6F7;
+        &.cbColumn {
+            width: 10%;
+            text-align: center;
+        }
+    }
+
+    td {
+        button {
+
+            span {
+                text-align: center;
+                word-wrap: break-word;
+            }
+        }
+
+        &.cbColumn {
+            width: 10%;
+            text-align: center;
+        }
+    }
+
+    tr {
+        height: 60px;
+
+    }
+
+    tr:nth-child(even) {
+        background-color: #F6F6F7;
+        text-align: right;
+    }
+}

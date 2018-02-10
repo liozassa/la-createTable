@@ -1,0 +1,41 @@
+<table class="la-grid" [ngStyle]="{ 'direction': getDirection() }">
+  <thead>
+    <tr *ngIf="editColumns">
+      <th *ngIf="comboColumn" class="cbColumn">
+        #
+      </th>
+      <ng-container *ngFor="let c of columns; let ci = index">
+        <th [ngStyle]="{ 'width': getWidth(c.width), 'text-align': getTextAlign(c.header_align) }">
+        <mat-checkbox class="checkbox-system" [checked]="ci === laTableService.selectedColumnIndex" (change)="setClickedColumn(ci)"></mat-checkbox>
+      </th>
+      </ng-container>
+    </tr>
+    <tr>
+      <th *ngIf="comboColumn" class="cbColumn">
+        #
+      </th>
+      <ng-container *ngFor="let c of columns;">
+        <th [ngStyle]="{ 'width': getWidth(c.width), 'text-align': getTextAlign(c.header_align) }">
+          {{ c.name }}
+        </th>
+      </ng-container>
+    </tr>
+  </thead>
+  <tbody>      
+    <tr *ngFor="let d of data; let i = index">
+      <td *ngIf="comboColumn" class="cbColumn">
+        <mat-checkbox class="checkbox-system" [checked]="i === laTableService.selectedRowIndex" (change)="setClickedRow(i)"></mat-checkbox>
+      </td>
+      <ng-container *ngFor="let c of columns; let j = index">
+        <td [ngStyle]="{ 'width': getWidth(c.width), 'text-align': getTextAlign(c.cell_align) }">
+          {{ d[c.property] }}
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>
+
+<!--
+<la-header></la-header>
+<la-row></la-row>
+-->
