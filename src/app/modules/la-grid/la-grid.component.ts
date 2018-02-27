@@ -10,8 +10,9 @@ import { LaTableService } from '../../services/la-table.service';
 export class LaGridComponent implements OnInit {
 
   @Input() rtl: boolean; // Deriction or grid, default false.
-  @Input() comboColumn: boolean; // show checkbox column, default false.
-  @Input() editColumns: boolean; // show checkbox row to delete columns, default false.
+  @Input() comboColumn: boolean; // Show checkbox column, default false.
+  @Input() editSchema: boolean; // Allow edit the schema of the table, show checkbox to delete columns, default false.
+  @Input() editData: boolean; // Allow edit the cells of thetable.
 
   selectedColumn: number;
   selectedRow: number;
@@ -21,13 +22,15 @@ export class LaGridComponent implements OnInit {
   constructor(private laTableService: LaTableService) {
     this.rtl = false;
     this.comboColumn = false;
+    this.editSchema = false;
+    this.editData = false;
     this.columns = [];
     this.data = [];
   }
 
   ngOnInit() {
-    this.columns = this.laTableService.columns;
-    this.data = this.laTableService.data;
+    this.columns = this.laTableService.getColumns();
+    this.data = this.laTableService.getRows();
   }
 
   /*
@@ -39,7 +42,7 @@ export class LaGridComponent implements OnInit {
       this.laTableService.clearSelectedRow();
     } else {
       this.laTableService.selectedRowIndex = index;
-      this.laTableService.selectedRowData = this.laTableService.columns[index];
+      // this.laTableService.selectedRowData = this.laTableService.columns[index];
     }
   }
 
@@ -78,6 +81,16 @@ export class LaGridComponent implements OnInit {
       return (width * 90) / 100;
     }
     return width;
+  }
+
+  updateColumn(colId: number, event: any) {
+    const value = event.target.value;
+    this.laTableService.updateColumn(colId, value);
+  }
+
+  updateCell(rowId: number, property: string, event: any) {
+    const value = event.target.value;
+    this.laTableService.updateCell(rowId, property, value);
   }
 
 }

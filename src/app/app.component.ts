@@ -15,6 +15,7 @@ export class AppComponent {
       {
         name: 'שם פרטי',
         property: 'first_name',
+        type: 'text',
         width: 40,
         header_align: 'center',
         cell_align: 'center'
@@ -22,6 +23,7 @@ export class AppComponent {
       {
         name: 'שם משפחה',
         property: 'last_name',
+        type: 'text',
         width: 40,
         header_align: 'center',
         cell_align: 'center'
@@ -29,6 +31,7 @@ export class AppComponent {
       {
         name: 'גיל',
         property: 'age',
+        type: 'text',
         width: 10,
         header_align: 'center',
         cell_align: 'center'
@@ -40,5 +43,10 @@ export class AppComponent {
       { first_name: 'מיטל', last_name: 'אסא', age: '29'},
       { first_name: 'נועה', last_name: 'מלול', age: '24'}
     ];
+  }
+
+  saveTable(event) {
+    console.log('columns', event.columns);
+    console.log('data', event.data);
   }
 }

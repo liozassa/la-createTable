@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ColumnDate } from '../column-data';
 import { LaTableService } from '../../services/la-table.service';
 
@@ -9,21 +9,46 @@ import { LaTableService } from '../../services/la-table.service';
 })
 export class LaPanelComponent implements OnInit {
 
-  constructor(private laTableService: LaTableService) { }
+  @Input() rtl: boolean; // Deriction or grid, default false.
+  @Input() comboColumn: boolean; // Show checkbox column, default false.
+  @Input() editSchema: boolean; // Allow edit the schema of the table, show checkbox to delete columns, default false.
+  @Input() editData: boolean; // Allow edit the cells of thetable.
+
+  @Output() save = new EventEmitter<any>(); // Return columns and data when save table.
+
+  editMode: boolean; // If table in edit mode.
+
+  constructor(private laTableService: LaTableService) {
+    this.rtl = false;
+    this.editMode = false;
+    this.editSchema = false;
+    this.editData = false;
+   }
 
   ngOnInit() {
   }
 
-  addColumn() {
-    this.laTableService.addColumn(new ColumnDate('צבע', 'color', 15));
-  }
-
-  deleteColumn() {
-    this.laTableService.deleteColumn();
+  changeEditMode() {
+    this.editMode = this.laTableService.changeEditMode();
   }
 
   addRow() {
 
   }
 
+  deleteRow() {
+
+  }
+
+  addColumn() {
+    this.laTableService.addColumn(new ColumnDate('צבע', 'color', 'text', 15));
+  }
+
+  deleteColumn() {
+    this.laTableService.deleteColumn();
+  }
+
+  returnTable() {
+    this.save.emit();
+  }
 }

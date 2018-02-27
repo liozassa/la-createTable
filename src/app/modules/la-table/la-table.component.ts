@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ColumnDate } from '../column-data';
 import { LaTableService } from '../../services/la-table.service';
 
@@ -10,20 +10,32 @@ import { LaTableService } from '../../services/la-table.service';
 export class LaTableComponent implements OnInit {
 
   @Input() rtl: boolean; // Deriction or grid, default false.
-  @Input() comboColumn: boolean; // show checkbox column, default false.
-  @Input() editColumns: boolean; // show checkbox column, default false.
+  @Input() comboColumn: boolean; // Show checkbox column, default false.
+  @Input() editSchema: boolean; // Allow edit the schema of the table, show checkbox to delete columns, default false.
+  @Input() editData: boolean; // Allow edit the cells of thetable.
   @Input() columns: ColumnDate[]; // Data about the table.
   @Input() data: any[]; // Data of table.
+
+  @Output() save = new EventEmitter<any>(); // Return columns and data when save table.
 
   constructor(private laTableService: LaTableService) {
     this.rtl = false;
     this.comboColumn = false;
+    this.editSchema = false;
+    this.editData = false;
     this.columns = [];
     this.data = [];
   }
 
   ngOnInit() {
-    this.laTableService.columns = this.columns;
-    this.laTableService.data = this.data;
+    this.laTableService.setColumns(this.columns);
+    this.laTableService.setRows(this.data);
+  }
+
+  returnTable() {
+    this.save.emit({
+      columns: this.laTableService.getColumns(),
+      data: this.laTableService.getRows()
+    });
   }
 }

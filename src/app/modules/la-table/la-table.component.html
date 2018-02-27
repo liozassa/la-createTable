@@ -1,3 +1,3 @@
-<la-grid [rtl]="rtl" [comboColumn]="comboColumn" [editColumns]="editColumns"></la-grid>
+<la-grid [rtl]="rtl" [comboColumn]="comboColumn" [editSchema]="editSchema" [editData]="editData"></la-grid>
 
-<la-panel></la-panel>
+<la-panel [comboColumn]="comboColumn" [editSchema]="editSchema" [editData]="editData" (save)="returnTable()"></la-panel>

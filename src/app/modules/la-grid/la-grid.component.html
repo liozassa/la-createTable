@@ -1,22 +1,27 @@
 <table class="la-grid" [ngStyle]="{ 'direction': getDirection() }">
   <thead>
-    <tr *ngIf="editColumns">
+    <tr *ngIf="laTableService.editMode && editSchema">
       <th *ngIf="comboColumn" class="cbColumn">
         #
       </th>
       <ng-container *ngFor="let c of columns; let ci = index">
         <th [ngStyle]="{ 'width': getWidth(c.width), 'text-align': getTextAlign(c.header_align) }">
-        <mat-checkbox class="checkbox-system" [checked]="ci === laTableService.selectedColumnIndex" (change)="setClickedColumn(ci)"></mat-checkbox>
-      </th>
+          <mat-checkbox class="checkbox-system" [checked]="ci === laTableService.selectedColumnIndex" (change)="setClickedColumn(ci)"></mat-checkbox>
+        </th>
       </ng-container>
     </tr>
     <tr>
       <th *ngIf="comboColumn" class="cbColumn">
         #
       </th>
-      <ng-container *ngFor="let c of columns;">
+      <ng-container *ngFor="let c of columns; let ci = index">
         <th [ngStyle]="{ 'width': getWidth(c.width), 'text-align': getTextAlign(c.header_align) }">
-          {{ c.name }}
+          <ng-container *ngIf="laTableService.editMode && editSchema" [ngSwitch]="c.type">
+            <input *ngSwitchCase="'text'" type="text" value="{{ c.name }}" (keyup)="updateColumn(ci, $event)">
+          </ng-container>
+          <ng-container *ngIf="!laTableService.editMode || !editSchema">
+              {{ c.name }}
+          </ng-container>
         </th>
       </ng-container>
     </tr>
@@ -28,7 +33,12 @@
       </td>
       <ng-container *ngFor="let c of columns; let j = index">
         <td [ngStyle]="{ 'width': getWidth(c.width), 'text-align': getTextAlign(c.cell_align) }">
-          {{ d[c.property] }}
+          <ng-container *ngIf="laTableService.editMode && editData" [ngSwitch]="c.type">
+            <input *ngSwitchCase="'text'" type="text" value="{{ d[c.property] }}" (keyup)="updateCell(i, c.property, $event)">
+          </ng-container>
+          <ng-container *ngIf="!laTableService.editMode || !editData">
+            {{ d[c.property] }}
+          </ng-container>
         </td>
       </ng-container>
     </tr>

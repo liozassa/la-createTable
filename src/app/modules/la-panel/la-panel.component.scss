@@ -1,9 +1,14 @@
-.fab {
+.button {
     box-shadow: 2px 2px 2px #888888;
     border-radius: 50%;
     border: none;
     width: 50px;
     height: 50px;
+
+    &.edit-grid {
+      background: green url('/assets/images/ico_edit_grid.svg') no-repeat center;
+      background-size: 35px;
+    }
 
     &.add-column {
         background: green url('/assets/images/ico_add_column.svg') no-repeat center;
@@ -12,6 +17,16 @@
 
     &.delete-column {
         background: red url('/assets/images/ico_delete_column.svg') no-repeat center;
+        background-size: 35px;
+    }
+
+    &.add-row {
+        background: green url('/assets/images/ico_add_row.svg') no-repeat center;
+        background-size: 35px;
+    }
+
+    &.delete-row {
+        background: red url('/assets/images/ico_delete_row.svg') no-repeat center;
         background-size: 35px;
     }
 }
