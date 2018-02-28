@@ -1,8 +1,18 @@
 # LaTable
 
-## Properties
+## Installing
 
+Install the current stable release:
 
+```
+npm install la-table --save
+```
+
+Or install the latest beta release:
+
+```
+npm install la-table@next --save
+```
 
 ## Properties
 
@@ -25,7 +35,7 @@
 | header_align | The test align of the header. | left, center, right |
 | cell_align | The test align of the celles. | left, center, right |
 
-## Data
+### Data
 
 any json array by filed like columns names.
 
