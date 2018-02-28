@@ -1,18 +1,33 @@
 # LaTable
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
+## Properties
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Properties
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+| Property Name | Description   |
+| ------------- | ------------- |
+| rtl | Deriction or grid, default false. |
+| comboColumn | Show checkbox column, default false. |
+| editSchema | Allow edit the schema of the table, show checkbox to delete columns, default false. |
+| editData | Allow edit the cells of thetable. |
 
-## Build
+## Input
+### Columns
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+| Property Name | Description | Values |
+| ------------- | ----------- | ----------- |
+| name | The name of column in table. | any string in any language. |
+| property | The name of the property from data. | string in english. |
+| type | The type of the value of column. | test, number, checkbox |
+| width | The width of the column in pressents. | number |
+| header_align | The test align of the header. | left, center, right |
+| cell_align | The test align of the celles. | left, center, right |
+
+## Data
+
+any json array by filed like columns names.
 
 ## Running unit tests
 
