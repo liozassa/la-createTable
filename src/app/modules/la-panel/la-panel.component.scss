@@ -5,8 +5,13 @@
     width: 50px;
     height: 50px;
 
+    &.save-grid {
+      background: green url('/assets/images/ico_save.svg') no-repeat center;
+      background-size: 35px;
+    }
+
     &.edit-grid {
-      background: green url('/assets/images/ico_edit_grid.svg') no-repeat center;
+      background: yellow url('/assets/images/ico_edit.svg') no-repeat center;
       background-size: 35px;
     }
 

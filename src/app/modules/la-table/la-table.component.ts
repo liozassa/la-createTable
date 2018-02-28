@@ -3,6 +3,7 @@ import { ColumnDate } from '../column-data';
 import { LaTableService } from '../../services/la-table.service';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'la-table',
   templateUrl: './la-table.component.html',
   styleUrls: ['./la-table.component.scss']

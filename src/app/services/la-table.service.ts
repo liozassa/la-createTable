@@ -26,6 +26,24 @@ export class LaTableService {
   }
 
   /*
+   * Add new empty row.
+   */
+  addRow() {
+    const row = {};
+    this.data.push(row);
+  }
+
+  /*
+   * Delete selected row.
+   */
+  deleteRow() {
+    if (this.selectedRowIndex !== -1) {
+      this.data.splice(this.selectedRowIndex, 1);
+      this.selectedRowIndex = -1;
+    }
+  }
+
+  /*
    * Add new empty column.
    */
   addColumn(column: ColumnDate) {
@@ -47,8 +65,8 @@ export class LaTableService {
    * colId - index of col in 'column' array.
    * value - new name of column.
    */
-  updateColumn(colId: number, value: any) {
-    this.columns[colId].name = value;
+  updateColumn(colId: number, property: string, value: any) {
+    this.columns[colId][property] = value;
   }
 
   /*

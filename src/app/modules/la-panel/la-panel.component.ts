@@ -3,6 +3,7 @@ import { ColumnDate } from '../column-data';
 import { LaTableService } from '../../services/la-table.service';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'la-panel',
   templateUrl: './la-panel.component.html',
   styleUrls: ['./la-panel.component.scss']
@@ -33,15 +34,16 @@ export class LaPanelComponent implements OnInit {
   }
 
   addRow() {
-
+    this.laTableService.addRow();
   }
 
   deleteRow() {
-
+    this.laTableService.deleteRow();
   }
 
   addColumn() {
-    this.laTableService.addColumn(new ColumnDate('צבע', 'color', 'text', 15));
+    const colIndex = this.laTableService.getColumns().length + 1;
+    this.laTableService.addColumn(new ColumnDate('שם עמודה', 'property' + colIndex, 'text', 15, 'center', 'center'));
   }
 
   deleteColumn() {

@@ -3,6 +3,7 @@ import { ColumnDate } from '../column-data';
 import { LaTableService } from '../../services/la-table.service';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'la-grid',
   templateUrl: './la-grid.component.html',
   styleUrls: ['./la-grid.component.scss']
@@ -83,9 +84,9 @@ export class LaGridComponent implements OnInit {
     return width;
   }
 
-  updateColumn(colId: number, event: any) {
+  updateColumn(colId: number, property: string, event: any) {
     const value = event.target.value;
-    this.laTableService.updateColumn(colId, value);
+    this.laTableService.updateColumn(colId, property, value);
   }
 
   updateCell(rowId: number, property: string, event: any) {
