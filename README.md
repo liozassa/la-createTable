@@ -18,7 +18,7 @@ npm install la-table@next --save
 
 | Property Name | Description   |
 | ------------- | ------------- |
-| rtl | Deriction or grid, default false. |
+| rtl | Direction or grid, default false. |
 | comboColumn | Show checkbox column, default false. |
 | editSchema | Allow edit the schema of the table, show checkbox to delete columns, default false. |
 | editData | Allow edit the cells of thetable. |

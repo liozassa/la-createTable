@@ -10,7 +10,7 @@ import { LaTableService } from '../../services/la-table.service';
 })
 export class LaGridComponent implements OnInit {
 
-  @Input() rtl: boolean; // Deriction or grid, default false.
+  @Input() rtl: boolean; // Direction or grid, default false.
   @Input() comboColumn: boolean; // Show checkbox column, default false.
   @Input() editSchema: boolean; // Allow edit the schema of the table, show checkbox to delete columns, default false.
   @Input() editData: boolean; // Allow edit the cells of thetable.

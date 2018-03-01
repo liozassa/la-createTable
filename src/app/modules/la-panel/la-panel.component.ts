@@ -10,7 +10,7 @@ import { LaTableService } from '../../services/la-table.service';
 })
 export class LaPanelComponent implements OnInit {
 
-  @Input() rtl: boolean; // Deriction or grid, default false.
+  @Input() rtl: boolean; // Direction or grid, default false.
   @Input() comboColumn: boolean; // Show checkbox column, default false.
   @Input() editSchema: boolean; // Allow edit the schema of the table, show checkbox to delete columns, default false.
   @Input() editData: boolean; // Allow edit the cells of thetable.
@@ -41,6 +41,9 @@ export class LaPanelComponent implements OnInit {
     this.laTableService.deleteRow();
   }
 
+  /*
+   * Add new empty column.
+   */
   addColumn() {
     const colIndex = this.laTableService.getColumns().length + 1;
     this.laTableService.addColumn(new ColumnDate('שם עמודה', 'property' + colIndex, 'text', 15, 'center', 'center'));
