@@ -1,8 +1,4 @@
 <div class="panel-Buttons footer">
   <button *ngIf="editSchema || editData" type="button" class="button save-grid" (click)="returnTable();"></button>
-  <button *ngIf="editSchema" type="button" class="button edit-grid" (click)="changeEditMode();"></button>
-  <button *ngIf="laTableService.editMode" type="button" class="button add-row" (click)="addRow();"></button>
-  <button *ngIf="laTableService.editMode" type="button" class="button delete-row" (click)="deleteRow();"></button>
-  <button *ngIf="laTableService.editMode && editSchema" type="button" class="button add-column" (click)="addColumn();"></button>
-  <button *ngIf="laTableService.editMode && editSchema" type="button" class="button delete-column" (click)="deleteColumn();"></button>
+  <button *ngIf="editSchema" type="button" class="button edit" (click)="changeEditMode();"></button>
 </div>

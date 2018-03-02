@@ -1,17 +1,17 @@
-# LaTable
+# LaCreateTable
 
 ## Installing
 
 Install the current stable release:
 
 ```
-npm install la-table --save
+npm install la-createTable --save
 ```
 
 Or install the latest beta release:
 
 ```
-npm install la-table@next --save
+npm install la-createTable@next --save
 ```
 
 ## Properties

@@ -1,50 +1,65 @@
 <table class="la-grid" [ngStyle]="{ 'direction': getDirection() }">
   <thead>
+    <!--
     <tr *ngIf="laTableService.editMode && editSchema">
       <th *ngIf="comboColumn" class="cbColumn">
         #
       </th>
       <ng-container *ngFor="let c of columns; let ci = index">
         <th [ngStyle]="{ 'width': getWidth(c.width), 'text-align': getTextAlign(c.header_align) }">
-          <mat-checkbox class="checkbox-system" [checked]="ci === laTableService.selectedColumnIndex" (change)="setClickedColumn(ci)"></mat-checkbox>
+          <button type="button" class="fab delete" (click)="deleteColumn(ci)"></button>
         </th>
       </ng-container>
     </tr>
+    -->
     <tr>
+      <!--
       <th *ngIf="comboColumn" class="cbColumn">
         #
       </th>
+      -->
       <ng-container *ngFor="let c of columns; let ci = index">
         <th [ngStyle]="{ 'width': getWidth(c.width), 'text-align': getTextAlign(c.header_align) }">
-          <ng-container *ngIf="laTableService.editMode && editSchema" [ngSwitch]="c.type">
-            <input *ngSwitchCase="'text'" type="text" value="{{ c.name }}" (keyup)="updateColumn(ci, 'name', $event)">
-            <input *ngSwitchCase="'text'" type="text" value="{{ c.property }}" (keyup)="updateColumn(ci, 'property', $event)">
+          <ng-container *ngIf="laTableService.editMode && editSchema">
+            <input type="text" value="{{ c.name }}" (keyup)="updateColumn(ci, 'name', $event)">
+            <button type="button" class="fab delete" (click)="deleteColumn(ci)"></button>
           </ng-container>
           <ng-container *ngIf="!laTableService.editMode || !editSchema">
               {{ c.name }}
           </ng-container>
         </th>
       </ng-container>
+      <th *ngIf="laTableService.editMode && editSchema" class="edit-schema-col"> <!-- add new column -->
+        <button type="button" class="fab add" (click)="addColumn()"></button>
+      </th>
     </tr>
   </thead>
   <tbody>      
     <tr *ngFor="let d of data; let i = index">
+      <!--
       <td *ngIf="comboColumn" class="cbColumn">
         <mat-checkbox class="checkbox-system" [checked]="i === laTableService.selectedRowIndex" (change)="setClickedRow(i)"></mat-checkbox>
       </td>
+      -->
       <ng-container *ngFor="let c of columns; let j = index">
         <td [ngStyle]="{ 'width': getWidth(c.width), 'text-align': getTextAlign(c.cell_align) }">
-          <ng-container *ngIf="laTableService.editMode && editData" [ngSwitch]="c.type">
-            <input *ngSwitchCase="'text'" type="text" value="{{ d[c.property] }}" (keyup)="updateCell(i, c.property, $event)">
+          <ng-container *ngIf="laTableService.editMode && editData">
+            <input type="text" value="{{ d[c.property] }}" (keyup)="updateCell(i, c.property, $event)">
           </ng-container>
           <ng-container *ngIf="!laTableService.editMode || !editData">
             {{ d[c.property] }}
           </ng-container>
         </td>
       </ng-container>
+      <td *ngIf="laTableService.editMode && editSchema" class="edit-schema-col"> <!-- delete row button -->
+        <button type="button" class="fab delete" (click)="deleteRow(i)"></button>
+      </td>
     </tr>
   </tbody>
 </table>
+<td *ngIf="laTableService.editMode && editSchema" class="edit-schema-col" [ngStyle]="{ 'float': getFloat() }"> <!-- delete row button -->
+  <button type="button" class="fab add" (click)="addRow()"></button>
+</td>
 
 <!--
 <la-header></la-header>

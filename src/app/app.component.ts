@@ -14,24 +14,24 @@ export class AppComponent {
     this.columns = [
       {
         name: 'שם פרטי',
-        property: 'first_name',
-        type: 'text',
+        property: 'c1',
+        order: 1,
         width: 40,
         header_align: 'center',
         cell_align: 'center'
       },
       {
         name: 'שם משפחה',
-        property: 'last_name',
-        type: 'text',
+        property: 'c2',
+        order: 2,
         width: 40,
         header_align: 'center',
         cell_align: 'center'
       },
       {
         name: 'גיל',
-        property: 'age',
-        type: 'text',
+        property: 'c3',
+        order: 3,
         width: 10,
         header_align: 'center',
         cell_align: 'center'
@@ -39,9 +39,9 @@ export class AppComponent {
     ];
 
     this.data = [
-      { first_name: 'ליעוז', last_name: 'אסא', age: '29'},
-      { first_name: 'מיטל', last_name: 'אסא', age: '29'},
-      { first_name: 'נועה', last_name: 'מלול', age: '24'}
+      { c1: 'ליעוז', c2: 'אסא', c3: '29'},
+      { c1: 'מיטל', c2: 'אסא', c3: '29'},
+      { c1: 'נועה', c2: 'מלול', c3: '24'}
     ];
   }
 

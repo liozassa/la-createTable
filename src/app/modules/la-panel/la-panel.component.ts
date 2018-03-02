@@ -33,26 +33,6 @@ export class LaPanelComponent implements OnInit {
     this.editMode = this.laTableService.changeEditMode();
   }
 
-  addRow() {
-    this.laTableService.addRow();
-  }
-
-  deleteRow() {
-    this.laTableService.deleteRow();
-  }
-
-  /*
-   * Add new empty column.
-   */
-  addColumn() {
-    const colIndex = this.laTableService.getColumns().length + 1;
-    this.laTableService.addColumn(new ColumnDate('שם עמודה', 'property' + colIndex, 'text', 15, 'center', 'center'));
-  }
-
-  deleteColumn() {
-    this.laTableService.deleteColumn();
-  }
-
   returnTable() {
     this.save.emit();
   }

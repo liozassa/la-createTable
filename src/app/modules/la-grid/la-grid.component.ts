@@ -64,6 +64,10 @@ export class LaGridComponent implements OnInit {
     return this.rtl ? 'rtl' : 'ltr';
   }
 
+  getFloat(): string {
+    return this.rtl ? 'right' : 'left';
+  }
+
   getTextAlign(align: string) {
     switch (align) {
       case 'right':
@@ -82,6 +86,32 @@ export class LaGridComponent implements OnInit {
       return (width * 90) / 100;
     }
     return width;
+  }
+
+  addRow() {
+    this.laTableService.addRow();
+  }
+
+  deleteRow(index: number) {
+    console.log('The index of deleted row', index);
+    if (index > -1) {
+      this.laTableService.deleteRow(index);
+    }
+  }
+
+  /*
+   * Add new empty column.
+   */
+  addColumn() {
+    const colIndex = this.laTableService.getColumns().length + 1;
+    this.laTableService.addColumn(new ColumnDate('שם עמודה', 'c' + colIndex, colIndex, 15, 'center', 'center'));
+  }
+
+  deleteColumn(index: number) {
+    console.log('The index of deleted column', index);
+    if (index > -1) {
+      this.laTableService.deleteColumn(index);
+    }
   }
 
   updateColumn(colId: number, property: string, event: any) {

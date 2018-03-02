@@ -1,6 +1,6 @@
 {
-  "name": "la-table",
-  "version": "0.0.0",
+  "name": "la-createTable",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

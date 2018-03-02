@@ -36,10 +36,9 @@ export class LaTableService {
   /*
    * Delete selected row.
    */
-  deleteRow() {
-    if (this.selectedRowIndex !== -1) {
-      this.data.splice(this.selectedRowIndex, 1);
-      this.selectedRowIndex = -1;
+  deleteRow(index: number) {
+    if (index > -1 && this.data.length > index) {
+      this.data.splice(index, 1);
     }
   }
 
@@ -53,10 +52,9 @@ export class LaTableService {
   /*
    * Delete selected column.
    */
-  deleteColumn() {
-    if (this.selectedColumnIndex !== -1) {
-      this.columns.splice(this.selectedColumnIndex, 1);
-      this.selectedColumnIndex = -1;
+  deleteColumn(index: number) {
+    if (index > -1 && this.columns.length > index) {
+      this.columns.splice(index, 1);
     }
   }
 
