@@ -1,7 +1,21 @@
 {
-  "name": "la-createTable",
-  "version": "0.0.1",
-  "license": "MIT",
+  "name": "la-create-table",
+  "version": "1.0.0",
+  "author": "Lioz assa <liozassa@gmail.com>",
+  "main": "index.js",
+  "license": "ISC",
+  "keywords":[
+    "table",
+    "grid"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liozassa/la-table.git"
+  },
+  "bugs": {
+    "url": "https://github.com/liozassa/la-table/issues"
+  },
+  "homepage": "https://github.com/liozassa/la-table#readme",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +24,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular-devkit/core": "^0.3.1",
     "@angular/animations": "^5.2.0",

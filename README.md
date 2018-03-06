@@ -5,14 +5,24 @@
 Install the current stable release:
 
 ```
-npm install la-createTable --save
+npm install la-create-table --save
 ```
 
 Or install the latest beta release:
 
 ```
-npm install la-createTable@next --save
+npm install la-create-table@next --save
 ```
+
+## Used
+
+Add to your app.module.ts file the next import:
+
+```
+import { LaTableComponent } from 'la-create-table/src/app/modules/la-table/la-table.component';
+```
+
+Add the tag '<la-table></la-table>' where you want the table.
 
 ## Properties
 
