@@ -19,7 +19,7 @@ npm install la-create-table@next --save
 Add to your app.module.ts file the next import:
 
 ```
-import { LaTableComponent } from 'la-create-table/src/app/modules/la-table/la-table.component';
+import { LaTableModule } from 'la-create-table/src/app/modules/la-table/la-table.module';
 ```
 
 Add the tag '<la-table></la-table>' where you want the table.
