@@ -1,11 +1,13 @@
 {
   "name": "la-create-table",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Lioz assa <liozassa@gmail.com>",
   "main": "index.js",
   "license": "ISC",
   "keywords":[
+    "create table",
     "table",
+    "create grid",
     "grid"
   ],
   "repository": {
